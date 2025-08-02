@@ -1,0 +1,38 @@
+﻿@model AutoCraft.Razor.Models.CustomerDTO
+@{
+    ViewData["Title"] = "Login";
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>@TempData["Success"]</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<h2 class="text-center mt-5">Login</h2>
+@if (ViewBag.Message != null)
+{
+    <p class="text-center" style="color:red">@ViewBag.Message</p>
+}
+<div style="width: 350px; margin: 40px auto;">
+    <form asp-action="Login">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-3">
+            <input asp-for="EmailAddress" class="form-control" placeholder="Email" />
+            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <input asp-for="AccountPassword" class="form-control" placeholder="Password" type="password" />
+            <span asp-validation-for="AccountPassword" class="text-danger"></span>
+        </div>
+        <div class="text-center">
+            <input type="submit" value="Login" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

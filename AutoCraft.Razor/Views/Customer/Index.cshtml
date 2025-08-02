@@ -1,0 +1,85 @@
+﻿@model List<AutoCraft.Razor.Models.CarDTO>
+@{
+    ViewData["Title"] = "Customer Vehicles & Services";
+}
+<h2>My Vehicles and Service History</h2>
+@if (Model.Count != 0)
+{
+    foreach (var car in Model)
+    {
+        <div class="card my-4">
+            <div class="card-header bg-primary text-white">
+                <strong>Car License Plate Number:</strong> @car.LicensePlateNumber
+            </div>
+            <div class="card-body">
+                @if (car.MaintenanceServices == null || !car.MaintenanceServices.Any())
+                {
+                    <p class="text-warning">This car has no service history.</p>
+                }
+                else
+                {
+                    <h5>Service History</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Service Date</th>
+                                <th>Completion Date</th>
+                                <th>Mechanic</th>
+                                <th>Work Description</th>
+                                <th>Status</th>
+                                <th>Hours</th>
+                                <th>Total Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var service in car.MaintenanceServices)
+                            {
+                                if (service.Status == "Pending")
+                                {
+                                    <tr class="table-warning">
+                                        <td>@service.ServiceDate.ToShortDateString()</td>
+                                        <td colspan="2" class="text-center text-muted">Service is still in progress</td>
+                                        <td>@(string.IsNullOrEmpty(service.WorkDescription) ? "Not started" : service.WorkDescription)</td>
+                                        <td><strong>@service.Status</strong></td>
+                                        <td>@(service.Hours.ToString("F1") ?? "N/A")</td>
+                                        <td>@(service.TotalCost.HasValue ? "$" + service.TotalCost.Value.ToString("F2") : "Pending")</td>
+                                    </tr>
+                                }
+                                else if (service.Status == "Completed")
+                                {
+                                    <tr class="table-success">
+                                        <td>@service.ServiceDate.ToShortDateString()</td>
+                                        <td>
+                                            @if (service.CompletionDate.HasValue)
+                                            {
+                                                @service.CompletionDate.Value.ToShortDateString()
+                                            }
+                                            else
+                                            {
+                                                <span class="text-danger">N/A</span>
+                                            }
+                                        </td>
+                                        <td>@service.MechanicName</td>
+                                        <td>@service.WorkDescription</td>
+                                        <td><span class="badge bg-success">@service.Status</span></td>
+                                        <td>@service.Hours.ToString("F1") hours</td>
+                                        <td>
+                                            <strong>@(service.TotalCost.HasValue ? "$" + service.TotalCost.Value.ToString("F2") : "N/A")</strong>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="alert alert-info">
+        <h4>No Vehicles Found</h4>
+        <p>You don't have any vehicles registered yet. Please contact the administrator to add your vehicle.</p>
+    </div>
+}
