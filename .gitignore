@@ -1,0 +1,126 @@
+## Ignore Visual Studio temporary files, build results, and
+## user-specific files
+
+# Build results
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.rsuser
+*.vsp
+
+# Auto-generated files
+Generated_Code/
+
+# VS Code settings
+.vscode/
+
+# Rider settings
+.idea/
+
+# VS for Mac
+.vscode/
+*.pidb
+*.userprefs
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# VS backup files
+*.bak
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# NUnit
+*.VisualState.xml
+TestResult.xml
+TestResults/
+
+# MSTest
+*.trx
+*.TestResults
+
+# Web projects
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Entity Framework
+*.dbmdl
+*.jfm
+
+# DotCover
+*.dotCover
+
+# Logs
+*.log
+
+# Local DB
+*.mdf
+*.ldf
+
+# Others
+*.ncb
+*.sdf
+*.cache
+*.pdb
+
+# Publish
+publish/
+*.Publish.xml
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.psmdcp
+*.ps1
+
+# Environment
+.env
+
+# Backup & dump files
+*.orig
+*.bak
+*.tmp
+*.swp
+*.swo
+*.dmp
+
+# Windows folder config
+Desktop.ini
+$RECYCLE.BIN/
+
+# Mac files
+.DS_Store
+
+# GitHub Copilot
+copilot.*
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Dotnet-specific
+project.assets.json
+project.lock.json
+project.fragment.lock.json
+*.deps.json
+
+# Global Tools restore cache
+.dotnet_tool/
+
+# .NET Core
+*.runtimeconfig.dev.json
